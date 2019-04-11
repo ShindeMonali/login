@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>login</title>
+</head>
+<body>
+<h1 style="color:#000080">Login</h1>
+<%= form_for :user, url: user_sign_in_path, html: { method: :post } do |form| %>
+
+  <div class="container">
+      <% flash.each do |key, value| %>
+        <div style="color:red" class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+  <p>
+    <%= form.label :User_name %><br>
+    <%= form.text_field :User_name %>
+  </p>
+ 
+  <p>
+    <%= form.label :Password %><br>
+    <%= form.text_field :Password %>
+  </p>
+  <p>
+  <%= form.check_box(:male) %>
+  <%= form.label(:male, "male") %>
+  <%= form.check_box(:female) %>
+  <%= form.label(:female, "female") %>
+  </p>
+  <p>
+    <%= form.submit "Login" %>
+  </p>
+<% end %>
+</body>
+</html>

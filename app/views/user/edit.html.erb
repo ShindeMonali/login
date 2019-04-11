@@ -1,0 +1,36 @@
+<h1 style="color:#000080">Edit User</h1>
+<%= form_for @user, url: {:controller => :user, action: :update}, html: { method: :put } do |form| %>
+ <% if @user && @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        prohibited this user from being saved:
+      </h2>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :User_name %><br>
+    <%= form.text_field :User_name %>
+  </p>
+  <p>
+    <%= form.label :Password %><br>
+    <%= form.text_field :Password %>
+  </p>
+  <p>
+    <%= form.label :Mobile_number %><span style="color:red"><%=@user.errors.messages[:Mobile_number].presence.to_s%></span><br>
+    <%= form.text_field :Mobile_number %>
+  </p>
+
+  <p>
+    <%= form.label :Gender %><br><span style="color:red"><%=@user.errors.messages[:Gender].presence.to_s%> </span>
+    <%= form.text_field :Gender %>
+  </p>
+
+  <p>
+    <%= form.label :Address %><br>
+    <%= form.text_field :Address %>
+  </p>
+
+    <%= form.submit "Update User" %>
+  </p>
+<% end %>

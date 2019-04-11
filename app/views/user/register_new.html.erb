@@ -1,0 +1,36 @@
+<h1 style="color:#000080">Create User</h1>
+<%= form_for @user, url: user_register_new_path, html: { method: :post } do |form| %>
+
+  <% if @user && @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        prohibited this user from being saved:
+      </h2>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :User_name %><span style="color:red"><%=@user.errors.messages[:User_name].presence.to_s%> </span><br>
+    <%= form.text_field :User_name %>
+  </p>
+
+  <p>
+    <%= form.label :Email %><span style="color:red"><%=@user.errors.messages[:Email].presence.to_s%> </span><br>
+    <%= form.text_field :Email %>
+  </p>
+ 
+  <p>
+    <%= form.label :Password %><span style="color:red"><%=@user.errors.messages[:Password].presence.to_s%> </span><br>
+    <%= form.text_field :Password %>
+  </p>
+
+  <p>
+    <%= form.label :Confirm_password %><span style="color:red"><%=@user.errors.messages[:Confirm_password].presence.to_s%> </span><br>
+    <%= form.text_field :Confirm_password %>
+  </p>
+
+  <p>
+    <%= form.submit "Login" %>
+  </p>
+  <%= link_to 'Login', user_sign_in_path %>
+<% end %>

@@ -1,0 +1,25 @@
+<%  content_for :title do %>
+About
+<% end %>
+<h1>Login</h1>
+<%= form_tag(controller: "user", action: "sign_in", method: "post") do %>
+
+    <%= label_tag 'User_name' %>
+	<%= text_field_tag 'User_name' %><br><br>
+
+    <%= label_tag 'Password' %>
+    <%= password_field_tag 'Password'%><br><br>
+
+    <%= check_box_tag 'male', 'male'%><%= label_tag 'male' %>
+    <%= check_box_tag 'female', 'female'%><%= label_tag 'female' %><br>
+
+	<%= submit_tag 'sign_in' %>
+<% end %>
+<!-- 
+<div style="border:1px red solid">
+<%= @User_name %><br>
+<%= @Password %><br>
+<%= @male %>
+<%= @female %><br>
+
+</div> -->
