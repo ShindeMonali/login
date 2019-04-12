@@ -5,13 +5,23 @@ About
 <%= form_tag(controller: "user", action: "sign_in", method: "post") do %>
 
     <%= label_tag 'User_name' %>
-	<%= text_field_tag 'User_name' %><br><br>
+	<%= text_field_tag 'username' %><br><br>
 
     <%= label_tag 'Password' %>
     <%= password_field_tag 'Password'%><br><br>
 
     <%= check_box_tag 'male', 'male'%><%= label_tag 'male' %>
-    <%= check_box_tag 'female', 'female'%><%= label_tag 'female' %><br>
+    <%= check_box_tag 'female', 'female'%><%= label_tag 'female' %><br><br>
+
+    <%= label_tag 'Type' %>
+    <%= radio_button_tag :student, 'student', :checked => true %> student
+    <%= radio_button_tag :teacher, 'teacher' %> teacher <br>
+
+    <%= hidden_field_tag :email, "test@test.com" %>
+
+
+
+    <br>
 
 	<%= submit_tag 'sign_in' %>
 <% end %>

@@ -17,6 +17,10 @@ class UserController < ApplicationController
 
 		@male = params[:gender]
 		@female = params[:genderr]
+		@student = params[:student]
+		@teacher = params[:teacher]
+		@hidden = params[:email]
+
 	end
 
 	def edit
@@ -39,13 +43,16 @@ class UserController < ApplicationController
 
 		@male = params[:male]
 		@female = params[:female]
+		@student = params[:student]
+		@teacher = params[:teacher]
+		@hidden = params[:email]
 
 		user = User.find { |u| u.User_name == params[:User_name]}
 
 		if (user.present? && user.Password.eql?(params[:Password]))
 			session.clear
 			session[:current_user_id] = user.id
-			redirect_to user_show_path(name: params[:User_name], password: params[:Password], gender: params[:male], genderr: params[:female])
+			redirect_to user_show_path(name: params[:User_name], password: params[:Password], gender: params[:male], genderr: params[:female], student: params[:student], teacher: params[:teacher], email: params[:email])
 		else
 		 flash[:error] = "Incorrect Password!----Please Enter correct Password"
 		 render 'user_login'
@@ -64,7 +71,7 @@ class UserController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-		redirect_to  user_user_login_path
+		redirect_to  user_about_path
 		else
 		render 'register_new'
 		end
