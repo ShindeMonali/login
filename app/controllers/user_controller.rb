@@ -11,13 +11,14 @@ class UserController < ApplicationController
 	end
     def profile
     	@user = User.find(params[:id])
-    	@cc = Course.all
+    	#@cc = Course.all
         if @user.present? && params[:course_ids]
 	        # =@user = User.find(params[:user][:id])
 	        @courses = Course.find(params[:course_ids])
-	        @user.courses<<@courses
-	        redirect_to user_profile_path
+	        @user.courses << @courses
+	    	# redirect_to user_profile_path
     	end
+    	@user_courses = @user.courses
     	#@courses = Course.find(params[:user][:course_ids])
     	#@user.courses<<@courses
     end
@@ -55,7 +56,7 @@ class UserController < ApplicationController
 		if (user.present? && user.Password.eql?(params[:Password]))
 			session.clear
 			session[:current_user_id] = user.id
-		  redirect_to user_profile_path(id: user[:id])
+		    redirect_to user_profile_path(id: user[:id])
 			#redirect_to user_profile_path(name: params[:User_name], password: params[:Password], Gender: params[:Gender], tyype: params[:tyype], email: params[:email],hobbies: params[:hobbies])
 			#redirect_to user_show_path(name: params[:User_name], password: params[:Password], Gender: params[:Gender], tyype: params[:tyype], email: params[:email],hobbies: params[:hobbies])
 		else
