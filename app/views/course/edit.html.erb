@@ -1,0 +1,37 @@
+<!-- Type : <%= @course[:name]%><br>
+Description : <%= @course[:description]%><br>
+Start Time : <%= @course[:start_time]%><br>
+End Time : <%= @course[:end_time]%><br>
+Difficulty Level : <%= @course[:level]%><br>
+Mode : <%= @course[:mode]%> -->
+<h1 style="color:#000080">Edit Course</h1>
+
+
+<%= form_for @course, url: {:controller => :course, action: :update}, html: { method: :put } do |form| %>
+
+<%= form.label :name %><br>
+<%= form.text_field :name %><br>
+
+<%= form.label :description %><br>
+<%= form.text_field :description %><br><br>
+
+<%= form.label :start_time %><br>
+<%= form.datetime_select :start_time, :ampm => true %><br>
+
+<%= form.label :end_time %><br>
+<%= form.datetime_select :end_time, :ampm => true %><br><br><br>
+
+<%= form.label :difficulty_level %><br>
+<%= form.radio_button :level, 'easy' %> easy
+<%= form.radio_button :level, 'medium' %> medium
+<%= form.radio_button :level, 'hard' %> hard <br><br>
+
+<%= form.label :Mode %><br>
+<%= form.check_box :mode, {:multiple => true}, "online",nil %>Online
+<%= form.check_box :mode, {:multiple => true}, "offline",nil %>Offline<br><br>
+
+<%= form.submit "Update" %>
+
+<%= link_to 'Back', course_show_path %>
+
+<% end %>

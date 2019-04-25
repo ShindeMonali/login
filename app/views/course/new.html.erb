@@ -1,0 +1,41 @@
+<h1>New Course</h1>
+<%= form_for @course, url: course_new_path, html: { method: :post } do |form| %>
+
+    <% if @course && @course.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        prohibited this user from being saved:
+      </h2>
+    </div>
+  <% end %>
+
+    <%= form.label :Name %><span style="color:red"><%=@course.errors.messages[:name].presence.to_s%> </span><br>
+	<%= form.text_field :name %><br><br>
+
+    <%= form.label :Mode %><br>
+    <%= form.check_box :mode, {:multiple => true}, "online",nil %>Online
+    <%= form.check_box :mode, {:multiple => true}, "offline",nil %>Offline
+
+    <br><br>
+
+	<%= form.label :Description %><br>
+	<%= form.text_area :description %><br><br>
+
+	<%= form.label :start_time %><br>
+	<%= form.datetime_select :start_time, :ampm => true %>
+	<br><br>
+
+	<%= form.label :end_time %><br>
+	<%= form.datetime_select :end_time, :ampm => true %>
+	<br><br>
+    
+    <%= form.label :difficulty_level %><br>
+    <%= form.radio_button :level, 'easy' %> easy
+    <%= form.radio_button :level, 'medium' %> medium
+    <%= form.radio_button :level, 'hard' %> hard <br><br>
+    <p>
+    <%= form.submit :submit, class: 'course-submit'%>
+	</p>
+    <%= link_to 'Back', course_show_path %>
+<% end %>
+
