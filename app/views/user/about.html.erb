@@ -5,25 +5,35 @@ About
 <%= form_tag(controller: "user", action: "sign_in", method: "post") do %>
 
     <%= label_tag 'User_name' %>
-	<%= text_field_tag 'username' %><br><br>
+	<%= text_field_tag 'User_name' %><br><br>
 
     <%= label_tag 'Password' %>
     <%= password_field_tag 'Password'%><br><br>
-
-    <%= check_box_tag 'male', 'male'%><%= label_tag 'male' %>
-    <%= check_box_tag 'female', 'female'%><%= label_tag 'female' %><br><br>
-
-    <%= label_tag 'Type' %>
-    <%= radio_button_tag :student, 'student', :checked => true %> student
-    <%= radio_button_tag :teacher, 'teacher' %> teacher <br>
-
-    <%= hidden_field_tag :email, "test@test.com" %>
-
-
-
+<!--
+    <%= label_tag 'Gender' %>
+    <%= radio_button_tag :Gender, 'male' %> male
+    <%= radio_button_tag :Gender, 'female' %> female <br>
     <br>
 
-	<%= submit_tag 'sign_in' %>
+    <%= label_tag 'Type' %>
+    <%= radio_button_tag :tyype, 'student' %> student
+    <%= radio_button_tag :tyype, 'teacher' %> teacher <br><br>
+    
+    <%= label_tag 'Hobbies' %><br>
+    <%= select_tag "hobbies", "<option>cricket</option><option>football</option><option>cooking</option><option>singing</option><option>dancing</option><option>painting</option>".html_safe, multiple: true%>
+    <br> <br>
+
+    op1<input type="checkbox" name="optops_new[]" id="optops_new" value="op1">
+    op2 <input type="checkbox" name="optops_new[]" id="optops_news" value="op2">
+
+    <br> <br>
+
+    <%= hidden_field_tag :email, "test@test.com" %>-->
+
+	<%= submit_tag 'sign_in' %><br><br>
+
+<%= link_to 'Back', user_index_path %>
+
 <% end %>
 <!-- 
 <div style="border:1px red solid">

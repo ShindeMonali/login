@@ -32,11 +32,30 @@
 
   <body>
 <ul>
-     <li><%= link_to 'User Profile' %></li>
+     <li><%= link_to 'User Profile'%></li>
      <li><%= link_to 'Edit_User', user_edit_path(session[:current_user_id]) %></li>
      <li><%= link_to 'sign_out', :controller => :user, :action => :sign_out %></li>
-     
 </ul>
+<p>User Name : <%= @user[:User_name] %></p>
+<p>Password : <%= @user[:Password] %></p>
+<p>Number : <%= @user[:Mobile_number]%></p>
+<p>Address : <%= @user[:Address]%></p>
+<p>Gender : <%= @user[:Gender] %></p>
+<p>Type : <%= @user[:tyype]%></p>
+<p>Hobbies : <%= @user[:hobbies]%></p>
+
+<%= form_with url: user_profile_path, html: { method: :get } do |form| %>
+  <%= form.hidden_field :id, :value => params[:id]%>
+  <%= form.collection_select :course_ids, Course.all, :id, :name %>
+  <%= form.submit "add" %>
+<% end %>
+
+<h3 style="color:  #556B2F">Courses</h3>
+<% @cc.each do |c| %>
+    Name : <%= c.name %><br>
+    Description : <%= c.description %><br><br>
+<% end %>
+
     <%= yield %>
   </body>
 </html>

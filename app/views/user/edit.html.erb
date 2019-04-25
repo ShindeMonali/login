@@ -20,17 +20,42 @@
     <%= form.label :Mobile_number %><span style="color:red"><%=@user.errors.messages[:Mobile_number].presence.to_s%></span><br>
     <%= form.text_field :Mobile_number %>
   </p>
+  <p>
+   <%= form.label 'Gender' %>
+    <%= form.radio_button :Gender, 'male' %> male
+    <%= form.radio_button :Gender, 'female' %> female <br>
+  </p>
+
+ <!--  <p>
+    <%= form.label 'Type' %><br>
+    <%= form.radio_button :tyype, 'student' %> student
+    <%= form.radio_button :tyype, 'principle' %>principle
+    <%= form.radio_button :tyype, 'teacher' %> teacher <br><br> 
+  </p> -->
+  
+  
+  <p>
+    <%= form.label 'Type' %><br>
+    <%= form.check_box("tyype", {:multiple => true}, "student",nil)%>student
+    <%= form.check_box("tyype", {:multiple => true}, "principle",nil)%>principle
+    <%= form.check_box("tyype", {:multiple => true}, "teacher",nil)%>teacher
+  </p>
+
 
   <p>
+    <%= form.label 'Hobbies' %><br><br>
+    <%= form.select(:hobbies, [['cricket'],['football'],['painting'], ['drawing'], ['playing'], ['singing']],{ :prompt => "Please select"},{ :multiple => true}) %>
+  </p>
+  <!-- <p>
     <%= form.label :Gender %><br><span style="color:red"><%=@user.errors.messages[:Gender].presence.to_s%> </span>
     <%= form.text_field :Gender %>
-  </p>
+  </p> -->
 
   <p>
     <%= form.label :Address %><br>
     <%= form.text_field :Address %>
   </p>
 
-    <%= form.submit "Update User" %>
+    <%= form.submit "Update" %>
   </p>
 <% end %>

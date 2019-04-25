@@ -11,4 +11,6 @@ class User < ApplicationRecord
       validates :Gender, 
                 :numericality => false
       validates :Confirm_password,:presence => true
+
+    has_and_belongs_to_many :courses
 end
