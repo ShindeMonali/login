@@ -12,5 +12,10 @@ class User < ApplicationRecord
                 :numericality => false
       validates :Confirm_password,:presence => true
 
-    has_and_belongs_to_many :courses
+    has_and_belongs_to_many :courses, -> { distinct }
+
+    validates_associated :course
+    #validates_uniqueness_of :course
+    #validates :courses, presence: true, uniqueness:true
+  
 end

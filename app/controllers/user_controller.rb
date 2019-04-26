@@ -10,13 +10,18 @@ class UserController < ApplicationController
 		# @female = params[:female]
 	end
     def profile
-    	@user = User.find(params[:id])
+    	if params[:id].present?
+    		user_id = params[:id]
+    	else
+    		user_id = params[:user][:id]
+    	end
+    	@user = User.find(user_id)
     	#@cc = Course.all
-        if @user.present? && params[:course_ids]
-	        # =@user = User.find(params[:user][:id])
-	        @courses = Course.find(params[:course_ids])
+        if @user.present? &&  params[:user].present? && params[:user][:course_ids]
+	        #@user = User.find(params[:user][:id])
+	        @courses = Course.find(params[:user][:course_ids])
 	        @user.courses << @courses
-	    	# redirect_to user_profile_path
+	        #redirect_to user_profile_path
     	end
     	@user_courses = @user.courses
     	#@courses = Course.find(params[:user][:course_ids])
