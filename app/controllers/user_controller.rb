@@ -10,6 +10,7 @@ class UserController < ApplicationController
 		# @female = params[:female]
 	end
     def profile
+    	binding.pry
     	if params[:id].present?
     		user_id = params[:id]
     	else
@@ -81,6 +82,7 @@ class UserController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
+		
 		if @user.save
 		redirect_to  user_about_path
 		else
