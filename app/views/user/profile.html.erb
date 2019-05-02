@@ -40,6 +40,7 @@
 <p>Gender : <%= @user[:Gender] %></p>
 <p>Type : <%= @user[:tyype]%></p>
 <p>Hobbies : <%= @user[:hobbies]%></p>
+<p>PHOTO<br><%= image_tag @user.photo.url(:medium) %></p>
 
 <%= form_with model: @user, url: user_profile_path, html: { method: :get } do |form| %>
   <% if @user && @user.errors.any? %>
@@ -55,10 +56,10 @@
 <% end %>
 
 <h3 style="color:  #556B2F">Courses</h3>
-<% @user_courses.each do |c| %>
-    Name : <%= c.name %><br>
-    Description : <%= c.description %><br><br>
-<% end %>
+<!-- <%# @user_courses.each do |c| %>
+    Name : <%#= c.name %><br>
+    Description : <%#= c.description %><br><br>
+<%# end %> -->
 
     <%= yield %>
   </body>

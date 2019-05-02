@@ -11,11 +11,14 @@
     <tr>
       <td><%= course.name %></td>
       <td><%= course.description %></td>
+      <td><%= image_tag course.image.url.to_s %></td>
       <td><%= link_to 'Update', course_edit_path(id: course[:id])  %></td>
       <td><%= link_to 'Delete', course_delete_path(id: course.id),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>
+  <!-- <p>PHOTO<br><%#= image_tag course.image.url.to_s %></p> -->
+
   <% end %>
   <%= link_to 'Back', course_index_path %>
 </table>

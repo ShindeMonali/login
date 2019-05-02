@@ -21,10 +21,10 @@ class UserController < ApplicationController
         if @user.present? &&  params[:user].present? && params[:user][:course_ids]
 	        #@user = User.find(params[:user][:id])
 	        @courses = Course.find(params[:user][:course_ids])
-	        @user.courses << @courses
+	        #@user.courses << @courses
 	        #redirect_to user_profile_path
     	end
-    	@user_courses = @user.courses
+    	#@user_courses = @user.courses
     	#@courses = Course.find(params[:user][:course_ids])
     	#@user.courses<<@courses
     end
@@ -35,6 +35,7 @@ class UserController < ApplicationController
 		@tyype = params[:tyype]
 		@hidden = params[:email]
 		@hobbies = params[:hobbies]
+		@photo = params[:photo]
 	end
 
 	def edit
@@ -45,6 +46,7 @@ class UserController < ApplicationController
 		@user = User.find(params[:id])
 		if @user.update_attributes!(user_params)
 			redirect_to user_profile_path(id: params[:id])
+			binding.pry
 		else
 			render 'edit'
 		end
@@ -57,6 +59,7 @@ class UserController < ApplicationController
 		@type = params[:tyype]
 		@hidden = params[:email]
 		@hobbies = params[:hobbies]
+		@photo = params[:photo]
 
 		user = User.find { |u| u.User_name == params[:User_name]}
 		if (user.present? && user.Password.eql?(params[:Password]))
@@ -93,6 +96,6 @@ class UserController < ApplicationController
 	private
 	def user_params
 		params.require(:user).permit(:User_name, :Email, :Password,
-		 :Confirm_password, :Mobile_number, :Gender, :Address, :tyype=>[], :hobbies=>[])
+		 :Confirm_password, :Mobile_number, :Gender, :Address, :photo, :tyype=>[], :hobbies=>[])
 	end
 end

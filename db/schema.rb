@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_23_122649) do
+ActiveRecord::Schema.define(version: 2019_05_02_065155) do
 
   create_table "courses", force: :cascade do |t|
     t.string "mode"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_04_23_122649) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "image"
   end
 
   create_table "courses_users", id: false, force: :cascade do |t|
@@ -42,6 +43,10 @@ ActiveRecord::Schema.define(version: 2019_04_23_122649) do
     t.string "Address"
     t.string "tyype"
     t.string "hobbies"
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.bigint "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
 end
