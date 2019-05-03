@@ -13,7 +13,7 @@
 	<%= form.text_field :name %><br><br>
     
     <%= form.label :Image %><br>
-    <%= form.file_field :image%><br>
+    <%= form.file_field :images, multiple: true%><br>
 
     <%= form.label :Mode %><br>
     <%= form.check_box :mode, {:multiple => true}, "online",nil %>Online

@@ -11,7 +11,7 @@
     <tr>
       <td><%= course.name %></td>
       <td><%= course.description %></td>
-      <td><%= image_tag course.image.thumb.url %></td>
+     <!-- <td><%#= course.images.url %></td> -->
       <td><%= link_to 'Update', course_edit_path(id: course[:id])  %></td>
       <td><%= link_to 'Delete', course_delete_path(id: course.id),
               method: :delete,

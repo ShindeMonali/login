@@ -11,6 +11,7 @@ gem 'sqlite3'
 gem "paperclip", "~> 6.0.0"
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
+gem "aws-sdk-s3", require: false
 #gem 'rmagick'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

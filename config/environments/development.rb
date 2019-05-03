@@ -60,4 +60,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   Paperclip.options[:command_path] = "/usr/bin/"
+  config.active_storage.service = :local
 end

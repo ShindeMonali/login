@@ -5,8 +5,12 @@ class CourseController < ApplicationController
 
   def create
     #@course = Course.find(course_params[:id])
+    binding.pry
     @course = Course.new(course_params)
+    binding.pry
     if @course.save
+
+
       #@course = Course.find(course_params[:id])
         redirect_to course_show_path(id: @course.id)
       else
@@ -40,7 +44,7 @@ class CourseController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:id, :image, :name, :description, :start_time, :end_time, :level, :mode =>[])
+    params.require(:course).permit(:id, :name, :description, :start_time, :end_time, :level, :mode =>[], :images =>[])
   end
   
 end
