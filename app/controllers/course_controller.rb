@@ -20,7 +20,6 @@ class CourseController < ApplicationController
   end
 
   def update
-    binding.pry
     @course = Course.find(params[:id])
     if @course.update(course_params)
       redirect_to user_index_path(id: params[:id])
