@@ -56,10 +56,10 @@
 <% end %>
 
 <h3 style="color:  #556B2F">Courses</h3>
-<!-- <%# @user_courses.each do |c| %>
-    Name : <%#= c.name %><br>
-    Description : <%#= c.description %><br><br>
-<%# end %> -->
+<% @user_courses.each do |c| %>
+    Name : <%= c.name %><br>
+    Description : <%= c.description %><br><br>
+<% end %>
 
     <%= yield %>
   </body>

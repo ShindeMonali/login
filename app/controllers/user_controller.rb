@@ -18,12 +18,12 @@ class UserController < ApplicationController
       @user = User.find(user_id)
       #@cc = Course.all
         if @user.present? &&  params[:user].present? && params[:user][:course_ids]
-          #@user = User.find(params[:user][:id])
+          @user = User.find(params[:user][:id])
           @courses = Course.find(params[:user][:course_ids])
-          #@user.courses << @courses
+          @user.courses << @courses
           #redirect_to user_profile_path
       end
-      #@user_courses = @user.courses
+      @user_courses = @user.courses
       #@courses = Course.find(params[:user][:course_ids])
       #@user.courses<<@courses
     end
