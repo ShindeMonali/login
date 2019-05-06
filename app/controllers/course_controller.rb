@@ -5,9 +5,7 @@ class CourseController < ApplicationController
 
   def create
     #@course = Course.find(course_params[:id])
-    binding.pry
     @course = Course.new(course_params)
-    binding.pry
     if @course.save
 
 

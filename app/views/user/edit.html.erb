@@ -1,12 +1,16 @@
 <h1 style="color:#000080">Edit User</h1>
 <%= form_for @user, url: {:controller => :user, action: :update}, html: { method: :put } do |form| %>
- <% if @user && @user.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        prohibited this user from being saved:
-      </h2>
-    </div>
-  <% end %>
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <p>
     <%= form.label :User_name %><br>
@@ -15,6 +19,10 @@
   <p>
     <%= form.label :Password %><br>
     <%= form.text_field :Password %>
+  </p>
+  <p>
+    <%= form.label :Email %><br><span style="color:red"><%=@user.errors.messages[:Email].presence.to_s%></span>
+    <%= form.text_field :Email %>
   </p>
   <p>
     <%= form.label :Mobile_number %><span style="color:red"><%=@user.errors.messages[:Mobile_number].presence.to_s%></span><br>
@@ -56,9 +64,8 @@
     <%= form.text_field :Address %>
   </p>
   
-  <%= form.label :photo %><br>
+  <%= form.label :photo %><br><span style="color:red"><%=@user.errors.messages[:photo].presence.to_s%></span>
   <%= form.file_field :photo %>
-
-    <%= form.submit "Update" %>
+  <%= form.submit "Update" %>
   </p>
 <% end %>

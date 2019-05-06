@@ -30,6 +30,7 @@ class UserController < ApplicationController
   def show
     @name = params[:name]
     @password = params[:Password]
+    @email = params[:Email]
     @Gender = params[:Gender]
     @tyype = params[:tyype]
     @hidden = params[:email]
@@ -42,17 +43,23 @@ class UserController < ApplicationController
   end
 
   def update
+    binding.pry
     @user = User.find(params[:id])
-    if @user.update_attributes!(user_params)
+    if @user.update_attributes(user_params)
       redirect_to user_profile_path(id: params[:id])
     else
+      
+     # @user.errors[:Mobile_number] << "Enter valid number"
+     # @user.errors[:photo] << "Invalid photo upload format" if @user.errors[:photo_content_type]
+     
       render 'edit'
     end
   end
 
   def sign_in
-        @name = params[:User_name]
+    @name = params[:User_name]
     @password = params[:Password]
+    @email = params[:Email]
     @Gender = params[:Gender]
     @type = params[:tyype]
     @hidden = params[:email]
