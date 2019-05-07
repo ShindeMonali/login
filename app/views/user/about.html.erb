@@ -1,9 +1,9 @@
 <%  content_for :title do %>
 About
 <% end %>
-<h1>Login</h1>
+<h1 style="text-align: center;">Login</h1>
 <%= form_tag(controller: "user", action: "sign_in", method: "post") do %>
-
+    <div class="boxlogin">
     <%= label_tag 'User_name' %>
 	<%= text_field_tag 'User_name' %><br><br>
 
@@ -30,10 +30,11 @@ About
 
     <%= hidden_field_tag :email, "test@test.com" %>-->
 
-	<%= submit_tag 'sign_in' %><br><br>
-
-<%= link_to 'Back', user_index_path %>
-
+	<%= button_tag 'sign_in' , class: "buttonn" %><br><br>
+    </div>
+<p style="text-align: center;">
+<%= link_to 'Back', user_index_path%>
+</p>
 <% end %>
 <!-- 
 <div style="border:1px red solid">

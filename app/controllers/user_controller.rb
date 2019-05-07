@@ -43,7 +43,6 @@ class UserController < ApplicationController
   end
 
   def update
-    binding.pry
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       redirect_to user_profile_path(id: params[:id])

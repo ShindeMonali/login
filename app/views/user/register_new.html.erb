@@ -1,37 +1,45 @@
-<h1 style="color:#000080">Create User</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<h1 style="color:#000080"><center>Create User</center></h1>
 <%= form_for @user, url: user_register_new_path, html: { method: :post } do |form| %>
-
   <% if @user && @user.errors.any? %>
     <div id="error_explanation">
-      <h2>
-        prohibited this user from being saved:
-      </h2>
     </div>
   <% end %>
 
-  <p>
+  <div class="box">
+    <p>
     <%= form.label :User_name %><span style="color:red"><%=@user.errors.messages[:User_name].presence.to_s%> </span><br>
     <%= form.text_field :User_name, placeholder: "Enter Name" %>
-  </p>
+    </p>
 
-  <p>
+    <p>
     <%= form.label :Email %><span style="color:red"><%=@user.errors.messages[:Email].presence.to_s%> </span><br>
     <%= form.text_field :Email, placeholder: "Enter Email" %>
-  </p>
- 
-  <p>
+    </p>
+
+    <p>
     <%= form.label :Password %><span style="color:red"><%=@user.errors.messages[:Password].presence.to_s%> </span><br>
     <%= form.text_field :Password, placeholder: "Enter Password" %>
-  </p>
+    </p>
 
-  <p>
+    <p>
     <%= form.label :Confirm_password %><span style="color:red"><%=@user.errors.messages[:Confirm_password].presence.to_s%> </span><br>
     <%= form.text_field :Confirm_password, placeholder: "Confirm Password" %>
-  </p>
+    </p>
 
-  <p>
-    <%= form.button "Login" %>
+    <p style = "text-align:center" >
+    <%= form.button "Login",class: "button"%>
+    </p>
+  </div>
+  <p style = "text-align:center">
+    <%= link_to 'Login', user_about_path %>
+    <%= link_to 'Back', user_index_path %>
   </p>
-  <%= link_to 'Login', user_about_path %>
-  <%= link_to 'Back', user_index_path %>
 <% end %>
+</body>
+</html>
