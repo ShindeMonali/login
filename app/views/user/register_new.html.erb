@@ -11,26 +11,26 @@
 
   <p>
     <%= form.label :User_name %><span style="color:red"><%=@user.errors.messages[:User_name].presence.to_s%> </span><br>
-    <%= form.text_field :User_name %>
+    <%= form.text_field :User_name, placeholder: "Enter Name" %>
   </p>
 
   <p>
     <%= form.label :Email %><span style="color:red"><%=@user.errors.messages[:Email].presence.to_s%> </span><br>
-    <%= form.text_field :Email %>
+    <%= form.text_field :Email, placeholder: "Enter Email" %>
   </p>
  
   <p>
     <%= form.label :Password %><span style="color:red"><%=@user.errors.messages[:Password].presence.to_s%> </span><br>
-    <%= form.text_field :Password %>
+    <%= form.text_field :Password, placeholder: "Enter Password" %>
   </p>
 
   <p>
     <%= form.label :Confirm_password %><span style="color:red"><%=@user.errors.messages[:Confirm_password].presence.to_s%> </span><br>
-    <%= form.text_field :Confirm_password %>
+    <%= form.text_field :Confirm_password, placeholder: "Confirm Password" %>
   </p>
 
   <p>
-    <%= form.submit "Login" %>
+    <%= form.button "Login" %>
   </p>
   <%= link_to 'Login', user_about_path %>
   <%= link_to 'Back', user_index_path %>
